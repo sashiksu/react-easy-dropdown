@@ -1,0 +1,35 @@
+{
+  "name": "react-simple-select",
+  "version": "1.0.0",
+  "description": "Powerful select component for react web application with fewer dependencies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "select component",
+    "light-weighted component",
+    "zero dependencies"
+  ],
+  "author": "Sashika Suraweera",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "i": "^0.3.7",
+    "npm": "^8.19.2"
+  }
+}
