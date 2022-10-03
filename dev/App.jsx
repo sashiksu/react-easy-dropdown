@@ -1,9 +1,10 @@
 import React from "react";
-import { MyCounter } from "./index2";
+import { MyCounter } from "../src/index.js";
 
 const App = () => {
   return (
     <>
+      <h2>Inside dev</h2>
       <MyCounter value={2} />
     </>
   );

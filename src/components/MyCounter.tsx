@@ -14,6 +14,7 @@ const MyCounter = ({ value = 0 }: Props) => {
     setCounter((prev) => prev + 1);
   };
 
+  console.log("Testing !");
   return (
     <div>
       <h1>Counter: {counter}</h1>
