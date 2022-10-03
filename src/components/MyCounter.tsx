@@ -3,6 +3,7 @@ import React, { useState } from "react";
 type Props = {
   value?: number;
 };
+
 const MyCounter = ({ value = 0 }: Props) => {
   const [counter, setCounter] = useState(value);
 
@@ -14,7 +15,6 @@ const MyCounter = ({ value = 0 }: Props) => {
     setCounter((prev) => prev + 1);
   };
 
-  console.log("Testing !");
   return (
     <div>
       <h1>Counter: {counter}</h1>

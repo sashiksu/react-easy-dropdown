@@ -5,10 +5,10 @@ const webpack = require("webpack");
 module.exports = {
   entry: "./dev/index.js",
   mode: "development",
-  //loader: "babel-loader",
   module: {
     rules: [
       {
+        //test: /\.(js|jsx|ts|tsx)$/,
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: "babel-loader",
@@ -20,11 +20,12 @@ module.exports = {
       },
       {
         test: /\.(ts|tsx)$/,
-        use: "raw-loader",
+        exclude: /node_modules/,
+        use: ["ts-loader"],
       },
     ],
   },
-  resolve: { extensions: ["*", ".js", ".jsx", ".tsx", ".ts"] },
+  resolve: { extensions: ["*", ".js", ".jsx", ".tsx", ".ts", ".json"] },
   output: {
     path: path.resolve(__dirname, "dist/dev/"),
     publicPath: "/dist/",
