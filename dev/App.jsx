@@ -1,5 +1,5 @@
 import React from "react";
-import { MyCounter } from "../src/index.js";
+import { MyCounter } from "../src";
 
 const App = () => {
   return (
