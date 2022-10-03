@@ -1,10 +1,11 @@
 import React from "react";
-import { MyCounter } from "./index2";
+import { MyCounter } from "../src";
 
 const App = () => {
   return (
     <>
-      <MyCounter value={2} />
+      <h2>Inside dev</h2>
+      <MyCounter value={23} />
     </>
   );
 };

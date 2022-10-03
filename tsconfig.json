@@ -4,7 +4,10 @@
   ],
   "exclude": [
     "dist",
-    "node_modules"
+    "node_modules",
+    "dev",
+    "dev_dist",
+    "webpack.config.js"
   ],
   "compilerOptions": {
     "module": "esnext",
@@ -24,8 +27,6 @@
     "noUnusedParameters": true,
     "moduleResolution": "node",
     "jsx": "react",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
   }
 }
