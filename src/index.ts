@@ -1,3 +1,3 @@
-import MyCounter from "./components/MyCounter";
+import BasicSelect from "./components/BasicSelect";
 
-export { MyCounter };
+export { BasicSelect };

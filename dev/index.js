@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import LivePlayground from "./LivePlayground";
 
 if (module.hot) {
   module.hot.accept();
@@ -13,6 +13,6 @@ so we can check where component tree throws warnings when we updates core packag
 */
 root.render(
   <React.StrictMode>
-    <App />
+    <LivePlayground />
   </React.StrictMode>,
 );
