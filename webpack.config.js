@@ -3,12 +3,13 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
+  target: "web",
+  devtool: "source-map",
   entry: "./dev/index.js",
   mode: "development",
   module: {
     rules: [
       {
-        //test: /\.(js|jsx|ts|tsx)$/,
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: "babel-loader",
@@ -28,7 +29,7 @@ module.exports = {
   resolve: { extensions: ["*", ".js", ".jsx", ".tsx", ".ts", ".json"] },
   output: {
     path: path.resolve(__dirname, "dist/dev/"),
-    publicPath: "/dist/",
+    publicPath: "/dist/dev/",
     filename: "bundle.js",
   },
   devServer: {

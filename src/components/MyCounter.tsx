@@ -14,13 +14,13 @@ const MyCounter = ({ value = 0 }: Props) => {
   const onPlus = () => {
     setCounter((prev) => prev + 1);
   };
-
+  const isYellow = 1;
   return (
-    <div>
-      <h1>Counter: {counter}</h1>
+    <>
+      <h1 style={{ backgroundColor: isYellow ? "aqua" : "blue" }}>Counter: {counter}</h1>
       <button onClick={onMinus}>-</button>
       <button onClick={onPlus}>+</button>
-    </div>
+    </>
   );
 };
 
