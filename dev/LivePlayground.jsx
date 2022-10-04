@@ -27,7 +27,10 @@ const LivePlayground = () => {
           <p>Testing Simple Select</p>
         </div>
         <div className='col-md-6'>
-          <BasicSelect options={options} value={options[0]} />
+          <BasicSelect
+            options={options}
+            //value={options[0]}
+          />
         </div>
       </div>
     </div>

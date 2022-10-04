@@ -2,9 +2,9 @@ import React, { Component, createRef } from "react";
 import { BasicSelectOption } from "../../models/Select/SelectControlsDefinitions";
 import { BasicSelectControlProps } from "../../models/Select/SelectControlsProps";
 import { BasicSelectControlState } from "../../models/Select/SelectControlsState";
+import BasicOptions from "./BasicOptions";
 import "./styles.css";
-
-export default class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlState> {
+class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlState> {
   constructor(props: BasicSelectControlProps) {
     super(props);
     this.state = {
@@ -46,7 +46,7 @@ export default class BasicSelect extends Component<BasicSelectControlProps, Basi
     });
   };
 
-  onBodyClick = (e: Event): void => {
+  /* onBodyClick = (e: Event): void => {
     if (this.state.basicSelectRef.current!.contains(e.target as HTMLElement)) {
       return;
     }
@@ -59,26 +59,26 @@ export default class BasicSelect extends Component<BasicSelectControlProps, Basi
 
   componentWillUnmount(): void {
     document.removeEventListener("click", this.onBodyClick);
-  }
+  } */
 
-  render(): React.ReactNode {
-    const { options, id /*required, disabled, autofocus */ } = this.props;
+  render(): JSX.Element {
+    const { options, id /* required, disabled, autofocus */ } = this.props;
     const { basicSelectRef, selectedValue, showOptions, highlightedOptionId } = this.state;
 
     return (
       <>
         <div tabIndex={0} className='basic-select-container' id={id} ref={basicSelectRef}>
-          <span className='value'>{selectedValue.value}</span>
+          <span className='value'>{selectedValue ? selectedValue.value : "Select Item"}</span>
           <button className='clear-btn' onClick={() => this.reset()}>
             &times;
           </button>
           <div className='divider'></div>
           <div className='caret' onClick={() => this.showOption(!showOptions)}></div>
-          <ul className={`options ${showOptions ? "show" : ""}`}>
+          {/* <ul className={`options ${showOptions ? "show" : ""}`}>
             {options.map((option) => {
               return (
                 <li
-                  className={`option ${selectedValue.id == option.id ? "selected" : ""} ${
+                  className={`option ${selectedValue && selectedValue.id == option.id ? "selected" : ""} ${
                     highlightedOptionId == option.id ? "highlighted" : ""
                   }`}
                   key={option.id}
@@ -92,9 +92,28 @@ export default class BasicSelect extends Component<BasicSelectControlProps, Basi
                 </li>
               );
             })}
-          </ul>
+          </ul> */}
+          <BasicOptions
+            options={options}
+            selectOption={this.selectOption}
+            showOptions={showOptions}
+            selectedValue={selectedValue}
+            showOption={this.showOption}
+            highlightedOptionId={highlightedOptionId}
+            setHighlightedOptionId={this.setHighlightedOptionId}
+            basicSelectRef={this.state.basicSelectRef}
+          />
         </div>
       </>
     );
   }
+
+  public static defaultProps: Partial<BasicSelectControlProps> = {
+    value: undefined,
+    required: false,
+    disabled: false,
+    autofocus: false,
+  };
 }
+
+export default BasicSelect;

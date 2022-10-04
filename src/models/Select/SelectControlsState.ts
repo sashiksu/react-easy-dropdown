@@ -3,7 +3,7 @@ import { BasicSelectOption } from "./SelectControlsDefinitions";
 
 interface BasicSelectControlState {
   basicSelectRef: React.RefObject<HTMLDivElement>;
-  selectedValue: BasicSelectOption;
+  selectedValue: BasicSelectOption | undefined;
   showOptions: boolean;
   highlightedOptionId: string | number | null;
 }
