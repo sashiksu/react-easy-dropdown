@@ -23,13 +23,28 @@ const LivePlayground = () => {
       <h1>React Simple Select</h1>
       <div className='row'>
         <h2>Simple and Minimum Select</h2>
-        <div className='col-md-6'>
-          <p>Testing Simple Select</p>
-        </div>
+        <div className='col-md-6'></div>
         <div className='col-md-6'>
           <BasicSelect
             options={options}
             //value={options[0]}
+            hasLabelText={true}
+            //labelWrapperStyles={{ backgroundColor: "#eff" }}
+            labelText={"Please select a option your own choice :"}
+            //labelTextStyles={{ fontWeight: "700" }}
+            hasSecondarTextForLabel={true}
+            //secondaryTextWrapperStyle={{ backgroundColor: "#eee", fontWeight: "100", fontSize: "1.1rem" }}
+            secondaryText={
+              "I'd like to pass varA,varB,varC,varD to my component, but not one by one because the number of variables inside objA and objB should be unknown."
+            }
+            secondaryTextStyles={{ marginBottom: "0.5em" }}
+            //secondaryTextStyles={{ fontSize: "0.7rem" }}
+            //wrapperStyles={{ color: "red", fontSize: "2rem" }}
+            //showDropdownOnClickOfValue={true}
+            selectContainerStyles={{ backgroundColor: "aqua", borderRadius: "1rem", border: "2px dashed #001" }}
+            //hasClear={false}
+            //clearControlEle={<span>-x-</span>}
+            //hasDivider={false}
           />
         </div>
       </div>

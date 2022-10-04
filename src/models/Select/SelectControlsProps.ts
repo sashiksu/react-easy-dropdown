@@ -10,8 +10,48 @@ interface BasicSelectControlProps {
   required?: boolean; //whether select is required field or not
   disabled?: boolean; //whether select  is disabled or not
   autofocus?: boolean; //whether need to focus select control
-  //additionally introduced functionality related props
-  isShowOptionsOnValueClick?: boolean;
+
+  /* 
+  Additionally introduced functionality related props
+  Props for :
+    - Label, Wrapper, Text
+    - Secondary Text for Label
+    - Select Component
+    - Value
+    - Clear
+    - Divider
+    - Dropdown
+  */
+
+  //label related props
+  hasLabelText?: boolean; //this will add label to top of select component
+  labelWrapperStyles?: object; // JSX style obj for label component
+  //label text related props
+  labelText?: string; //define what you need to show above select component
+  labelTextStyles?: object; // JSX style obj for label text
+  //secondary label text related props
+  hasSecondarTextForLabel?: boolean;
+  secondaryTextWrapperStyle?: object;
+  secondaryText?: string;
+  secondaryTextStyles?: object;
+
+  //select component container related props
+  selectContainerStyles: object;
+  //value display props
+  showDropdownOnClickOfValue: boolean;
+  //clear related props
+  hasClear?: boolean;
+  clearControlEle?: React.ReactNode;
+
+  //divider related props
+  hasDivider?: boolean;
+
+  //dropdown related props
+  hasDropdown?: boolean;
+  dropdownEle?: React.ReactNode;
+
+  //additional styles related props
+  wrapperStyles?: object; //JSX style object for outer most wrapper (wrapper of lebel and select component)
 }
 
 interface BasicOptionsProps {

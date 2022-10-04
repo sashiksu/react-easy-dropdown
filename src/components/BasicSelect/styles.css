@@ -1,7 +1,54 @@
-.basic-select-container {
+/* 
+Outer most wrapper starts here
+*/
+
+.basic-select {
+    padding: .5em;
+}
+
+/* 
+Outer most wrapper ends here
+*/
+
+
+
+/* 
+Label starts here
+*/
+
+.select__label--wrapper,
+.select__label--secondary-wrapper {
+    display: inline-block;
+    padding: 0;
+}
+
+.select__label--wrapper {
+    margin-bottom: .5em;
+}
+
+.select__label--text {
+    color: #777;
+    margin: 0;
+}
+
+.select__label--secondary-wrapper {
+    margin: 0;
+}
+
+.select__label--secondary-text {
+    color: #999;
+    font-size: .8em;
+    margin: 0;
+}
+
+/* 
+Label ends here
+*/
+
+.basic-select__container {
     position: relative;
-    width: 20em;
-    min-height: 1.5em;
+    width: 15em;
+    min-height: 3em;
     border: .05em solid #777;
     display: flex;
     align-items: center;
@@ -11,18 +58,18 @@
     outline: none;
 }
 
-.basic-select-container:focus {
+.basic-select__container:focus {
     border-color: hsl(200, 100%, 50%);
 }
 
-.value {
+.basic-select__value {
     flex-grow: 1;
     display: flex;
     gap: .5em;
     flex-wrap: wrap;
 }
 
-.clear-btn {
+.basic-select__clear-btn {
     background: none;
     color: #777;
     border: none;
@@ -32,24 +79,22 @@
     font-size: 1.25em;
 }
 
-.clear-btn:focus,
-.clear-btn:hover {
+.basic-select__clear-btn:focus,
+.basic-select__clear-btn:hover {
     color: #333;
 }
 
-.divider {
+.basic-select__divider {
     background-color: #777;
     align-self: stretch;
     width: .05em;
 }
 
-.caret {
-    translate: 0 25%;
-    border: .25em solid transparent;
-    border-top-color: #777;
+/* 
+Dropdown element
+*/
+.basic-select__dropdown {
     cursor: pointer;
-   /*  width: .5em;
-    height: .5em; */
 }
 
 .options {

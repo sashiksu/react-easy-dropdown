@@ -3,7 +3,12 @@ import { BasicSelectOption } from "../../models/Select/SelectControlsDefinitions
 import { BasicSelectControlProps } from "../../models/Select/SelectControlsProps";
 import { BasicSelectControlState } from "../../models/Select/SelectControlsState";
 import BasicOptions from "./BasicOptions";
+import Clear from "./Clear";
+import Divider from "./Divider";
+import Dropdown from "./Dropdown";
+import Label from "./Label";
 import "./styles.css";
+import Value from "./Value";
 class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlState> {
   constructor(props: BasicSelectControlProps) {
     super(props);
@@ -34,7 +39,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     });
   };
 
-  reset = (): void => {
+  clear = (): void => {
     if (this.state.showOptions) {
       this.setState({
         showOptions: false,
@@ -42,57 +47,34 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     }
     this.setState({
       highlightedOptionId: null,
+      selectedValue: undefined,
       showOptions: false,
     });
   };
 
-  /* onBodyClick = (e: Event): void => {
-    if (this.state.basicSelectRef.current!.contains(e.target as HTMLElement)) {
-      return;
-    }
-    this.showOption(false);
-  };
-
-  componentDidMount(): void {
-    document.addEventListener("click", this.onBodyClick);
-  }
-
-  componentWillUnmount(): void {
-    document.removeEventListener("click", this.onBodyClick);
-  } */
-
   render(): JSX.Element {
-    const { options, id /* required, disabled, autofocus */ } = this.props;
+    const { options, id /* required, disabled, autofocus */, selectContainerStyles } = this.props;
     const { basicSelectRef, selectedValue, showOptions, highlightedOptionId } = this.state;
 
     return (
-      <>
-        <div tabIndex={0} className='basic-select-container' id={id} ref={basicSelectRef}>
-          <span className='value'>{selectedValue ? selectedValue.value : "Select Item"}</span>
-          <button className='clear-btn' onClick={() => this.reset()}>
-            &times;
-          </button>
-          <div className='divider'></div>
-          <div className='caret' onClick={() => this.showOption(!showOptions)}></div>
-          {/* <ul className={`options ${showOptions ? "show" : ""}`}>
-            {options.map((option) => {
-              return (
-                <li
-                  className={`option ${selectedValue && selectedValue.id == option.id ? "selected" : ""} ${
-                    highlightedOptionId == option.id ? "highlighted" : ""
-                  }`}
-                  key={option.id}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    this.selectOption(option);
-                  }}
-                  onMouseEnter={() => this.setHighlightedOptionId(option.id)}
-                >
-                  {option.value}
-                </li>
-              );
-            })}
-          </ul> */}
+      <div className='basic-select'>
+        <Label {...this.props} />
+        <div
+          tabIndex={0}
+          className='basic-select__container'
+          style={selectContainerStyles}
+          id={id}
+          ref={basicSelectRef}
+        >
+          <Value
+            {...this.props}
+            selectedValue={selectedValue}
+            showOptions={showOptions}
+            onClickHanlder={this.showOption}
+          />
+          <Clear {...this.props} clearHandler={this.clear} />
+          <Divider {...this.props} />
+          <Dropdown {...this.props} showOptions={showOptions} onClickHanlder={this.showOption} />
           <BasicOptions
             options={options}
             selectOption={this.selectOption}
@@ -104,7 +86,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
             basicSelectRef={this.state.basicSelectRef}
           />
         </div>
-      </>
+      </div>
     );
   }
 
@@ -113,6 +95,29 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     required: false,
     disabled: false,
     autofocus: false,
+    //additionally introduced functionality related props
+
+    hasLabelText: false,
+    labelWrapperStyles: {},
+
+    labelText: "Select a option:",
+    labelTextStyles: {},
+
+    hasSecondarTextForLabel: false,
+    secondaryText: "",
+    secondaryTextStyles: {},
+
+    selectContainerStyles: {},
+
+    showDropdownOnClickOfValue: false,
+
+    hasClear: true,
+    clearControlEle: <span>&times;</span>,
+
+    hasDivider: true,
+
+    hasDropdown: true,
+    dropdownEle: <span>￬</span>,
   };
 }
 
