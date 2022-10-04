@@ -6,11 +6,11 @@ interface ClearControlProps {
 }
 
 const Clear = (props: BasicSelectControlProps & ClearControlProps) => {
-  const { hasClear, clearControlEle, clearHandler } = props;
+  const { disabled, hasClear, clearControlEle, clearHandler } = props;
   return (
     <>
       {hasClear && (
-        <button className='basic-select__clear-btn' onClick={() => clearHandler()}>
+        <button className={`basic-select__clear-btn ${disabled ? "no-events" : ""}`} onClick={() => clearHandler()}>
           {clearControlEle}
         </button>
       )}

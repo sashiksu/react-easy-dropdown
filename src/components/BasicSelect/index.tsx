@@ -53,15 +53,15 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
   };
 
   render(): JSX.Element {
-    const { options, id /* required, disabled, autofocus */, selectContainerStyles } = this.props;
+    const { options, id, disabled /* required, , autofocus */, selectContainerStyles } = this.props;
     const { basicSelectRef, selectedValue, showOptions, highlightedOptionId } = this.state;
 
     return (
-      <div className='basic-select'>
+      <div className={`basic-select`}>
         <Label {...this.props} />
         <div
           tabIndex={0}
-          className='basic-select__container'
+          className={`basic-select__container ${disabled ? "disabled-wrapper" : ""}`}
           style={selectContainerStyles}
           id={id}
           ref={basicSelectRef}

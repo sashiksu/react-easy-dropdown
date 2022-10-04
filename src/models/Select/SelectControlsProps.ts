@@ -14,6 +14,7 @@ interface BasicSelectControlProps {
   /* 
   Additionally introduced functionality related props
   Props for :
+    - Wrapper
     - Label, Wrapper, Text
     - Secondary Text for Label
     - Select Component
@@ -22,6 +23,8 @@ interface BasicSelectControlProps {
     - Divider
     - Dropdown
   */
+  //additional styles related props
+  wrapperStyles?: object; //JSX style object for outer most wrapper (wrapper of lebel and select component)
 
   //label related props
   hasLabelText?: boolean; //this will add label to top of select component
@@ -49,9 +52,6 @@ interface BasicSelectControlProps {
   //dropdown related props
   hasDropdown?: boolean;
   dropdownEle?: React.ReactNode;
-
-  //additional styles related props
-  wrapperStyles?: object; //JSX style object for outer most wrapper (wrapper of lebel and select component)
 }
 
 interface BasicOptionsProps {

@@ -1,4 +1,5 @@
 import React from "react";
+import { STYLES } from "../../constants";
 import { BasicSelectOption } from "../../models/Select/SelectControlsDefinitions";
 import { BasicSelectControlProps } from "../../models/Select/SelectControlsProps";
 
@@ -8,12 +9,12 @@ interface ValueControlProps {
   onClickHanlder: (showOptions: boolean) => void;
 }
 const Value = (props: BasicSelectControlProps & ValueControlProps) => {
-  const { showDropdownOnClickOfValue, selectedValue, showOptions, onClickHanlder } = props;
+  const { disabled, showDropdownOnClickOfValue, selectedValue, showOptions, onClickHanlder } = props;
   return (
     <>
       <span
-        className='basic-select__value'
-        style={showDropdownOnClickOfValue ? { cursor: "pointer" } : { cursor: "auto" }}
+        className={`basic-select__value ${disabled ? "no-events" : ""}`}
+        style={showDropdownOnClickOfValue ? { cursor: STYLES.POINTER_CURSOR } : { cursor: STYLES.NORMAL_CURSOR }}
         onClick={() => (showDropdownOnClickOfValue ? onClickHanlder(!showOptions) : null)}
       >
         {selectedValue ? selectedValue.value : "Select Item"}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { BasicOptionsProps } from "../../models/Select/SelectControlsProps";
 
 const BasicOptions = ({
@@ -11,8 +11,6 @@ const BasicOptions = ({
   setHighlightedOptionId,
   basicSelectRef,
 }: BasicOptionsProps) => {
-  const ref = useRef<HTMLUListElement>(null);
-
   /* 
   Handle dropdown option list outside click events
   */
@@ -30,7 +28,7 @@ const BasicOptions = ({
   }, []);
 
   return (
-    <ul className={`options ${showOptions ? "show" : ""}`} ref={ref}>
+    <ul className={`options ${showOptions ? "show" : ""}`}>
       {options.map((option) => {
         return (
           <li

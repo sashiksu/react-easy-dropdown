@@ -7,11 +7,14 @@ interface DropdownControlProps {
 }
 
 const Dropdown = (props: BasicSelectControlProps & DropdownControlProps) => {
-  const { hasDropdown, dropdownEle, showOptions, onClickHanlder } = props;
+  const { disabled, hasDropdown, dropdownEle, showOptions, onClickHanlder } = props;
   return (
     <>
       {hasDropdown && (
-        <div className='basic-select__dropdown' onClick={() => onClickHanlder(!showOptions)}>
+        <div
+          className={`basic-select__dropdown ${disabled ? "no-events" : ""}`}
+          onClick={() => onClickHanlder(!showOptions)}
+        >
           {dropdownEle}
         </div>
       )}

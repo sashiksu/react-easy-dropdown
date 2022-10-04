@@ -28,6 +28,7 @@ const LivePlayground = () => {
           <BasicSelect
             options={options}
             //value={options[0]}
+            //disabled={true}
             hasLabelText={true}
             //labelWrapperStyles={{ backgroundColor: "#eff" }}
             labelText={"Please select a option your own choice :"}
@@ -39,9 +40,8 @@ const LivePlayground = () => {
             }
             secondaryTextStyles={{ marginBottom: "0.5em" }}
             //secondaryTextStyles={{ fontSize: "0.7rem" }}
-            //wrapperStyles={{ color: "red", fontSize: "2rem" }}
             //showDropdownOnClickOfValue={true}
-            selectContainerStyles={{ backgroundColor: "aqua", borderRadius: "1rem", border: "2px dashed #001" }}
+            //selectContainerStyles={{ backgroundColor: "aqua", borderRadius: "1rem", border: "2px dashed #001" }}
             //hasClear={false}
             //clearControlEle={<span>-x-</span>}
             //hasDivider={false}
