@@ -80,10 +80,10 @@ Label ends here
     background-color: #e9ecef;
     border-color: #ced4da;
     box-shadow: none;
-    user-select:none;
-    -moz-user-select:none;
-    -webkit-user-select:none;
-    -ms-user-select:none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .basic-select__container:focus {
@@ -91,7 +91,7 @@ Label ends here
     background-color: #fff;
     border-color: #86b7fe;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
 .basic-select__value {
@@ -157,10 +157,10 @@ Dropdown element
 }
 
 .option.selected {
-    background-color: hsl(200, 100%, 70%);
+    background-color: rgba(13, 110, 253, .25);
 }
 
 .option.highlighted {
-    background-color: hsl(200, 100%, 50%);
+    background-color: rgba(13, 110, 253, .50);
     color: white
 }
