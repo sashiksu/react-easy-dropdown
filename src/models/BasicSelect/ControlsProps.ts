@@ -1,5 +1,17 @@
 import React from "react";
-import { BasicSelectOption } from "./SelectControlsDefinitions";
+import { BasicSelectOption } from "./ControlsDefinitions";
+import {
+  HighlightedOptionStyles,
+  LabelTextStyles,
+  LabelWrapperStyles,
+  OptionStyles,
+  OptionsWrapperStyles,
+  SecondaryLabelWrapperStyles,
+  SecondaryTextStyles,
+  SelectContainerStyles,
+  SelectedOptionStyles,
+  WrapperStyles
+} from "./ControlStyles";
 
 interface BasicSelectControlProps {
   //common select component related functionality props
@@ -27,22 +39,22 @@ interface BasicSelectControlProps {
     - Options Container
   */
   //additional styles related props
-  wrapperStyles?: object; //JSX style object for outer most wrapper (wrapper of lebel and select component)
+  wrapperStyles?: WrapperStyles; //JSX style object for outer most wrapper (wrapper of lebel and select component)
 
   //label related props
   hasLabelText?: boolean; //this will add label to top of select component
-  labelWrapperStyles?: object; // JSX style obj for label component
+  labelWrapperStyles?: LabelWrapperStyles; // JSX style obj for label component
   //label text related props
   labelText?: string; //define what you need to show above select component
-  labelTextStyles?: object; // JSX style obj for label text
+  labelTextStyles?: LabelTextStyles; // JSX style obj for label text
   //secondary label text related props
   hasSecondarTextForLabel?: boolean;
-  secondaryTextWrapperStyle?: object;
+  secondaryTextWrapperStyle?: SecondaryLabelWrapperStyles;
   secondaryText?: string;
-  secondaryTextStyles?: object;
+  secondaryTextStyles?: SecondaryTextStyles;
 
   //select component container related props
-  selectContainerStyles: object;
+  selectContainerStyles: SelectContainerStyles;
   //value display props
   showDropdownOnClickOfValue: boolean;
   //clear related props
@@ -57,10 +69,10 @@ interface BasicSelectControlProps {
   dropdownEle?: React.ReactNode;
 
   //options container related props
-  optionsWrapperStyles?: object;
-  optionStyles?: object;
-  selectedOptionStyles?: object;
-  highlightedOtionStyles?: object;
+  optionsWrapperStyles?: OptionsWrapperStyles;
+  optionStyles?: OptionStyles;
+  selectedOptionStyles?: SelectedOptionStyles;
+  highlightedOtionStyles?: HighlightedOptionStyles;
 }
 
 interface BasicOptionsProps {

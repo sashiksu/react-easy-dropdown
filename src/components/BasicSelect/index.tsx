@@ -99,11 +99,11 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
   /* -------------------- Dependency Functionalities -------------------- */
 
   render(): JSX.Element {
-    const { options, id, disabled /* required, , autofocus */, selectContainerStyles } = this.props;
+    const { options, id, disabled /* required, , autofocus */, wrapperStyles, selectContainerStyles } = this.props;
     const { basicSelectRef, selectedValue, showOptions, highlightedOptionId } = this.state;
 
     return (
-      <div className={`basic-select`}>
+      <div className={`basic-select`} style={wrapperStyles}>
         <Label {...this.props} />
         <div
           tabIndex={0}

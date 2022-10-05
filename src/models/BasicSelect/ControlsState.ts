@@ -1,5 +1,5 @@
 import React from "react";
-import { BasicSelectOption } from "./SelectControlsDefinitions";
+import { BasicSelectOption } from "./ControlsDefinitions";
 
 interface BasicSelectControlState {
   basicSelectRef: React.RefObject<HTMLDivElement>;
