@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BasicOptionsProps } from "../../models/Select/SelectControlsProps";
+import { BasicOptionsProps } from "../../models";
 
 const BasicOptions = ({
   options,

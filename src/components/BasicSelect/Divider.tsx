@@ -1,5 +1,5 @@
 import React from "react";
-import { BasicSelectControlProps } from "../../models/Select/SelectControlsProps";
+import { BasicSelectControlProps } from "../../models";
 
 const Divider = (props: BasicSelectControlProps) => {
   const { hasDivider } = props;

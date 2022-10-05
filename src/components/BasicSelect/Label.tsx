@@ -1,5 +1,5 @@
 import React from "react";
-import { BasicSelectControlProps } from "../../models/Select/SelectControlsProps";
+import { BasicSelectControlProps } from "../../models";
 
 const Label = (props: BasicSelectControlProps) => {
   const {

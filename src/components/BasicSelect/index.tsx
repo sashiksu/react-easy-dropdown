@@ -1,7 +1,5 @@
 import React, { Component, createRef } from "react";
-import { BasicSelectOption } from "../../models/Select/SelectControlsDefinitions";
-import { BasicSelectControlProps } from "../../models/Select/SelectControlsProps";
-import { BasicSelectControlState } from "../../models/Select/SelectControlsState";
+import { BasicSelectControlProps, BasicSelectControlState, BasicSelectOption } from "../../models";
 import BasicOptions from "./BasicOptions";
 import Clear from "./Clear";
 import Divider from "./Divider";
@@ -19,7 +17,10 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
       highlightedOptionId: null,
     };
   }
-
+  /* -------------------- Basic Functionalities -------------------- */
+  /* 
+    Handle user selection 
+  */
   handleSelect = (option: BasicSelectOption): void => {
     const { onSelect } = this.props;
     this.setState({
@@ -28,21 +29,40 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     });
     if (onSelect && typeof onSelect === "function") {
       onSelect(option.id);
+      return;
     }
   };
 
-  showOption = (isShow: boolean): void => {
-    this.setState({
-      showOptions: isShow,
-    });
+  /* 
+    Handle focus event
+  */
+  handleFocus = () => {
+    const { onFocus } = this.props;
+    if (onFocus && typeof onFocus === "function") {
+      onFocus();
+      return;
+    }
   };
 
-  setHighlightedOptionId = (optionId: string | number) => {
-    this.setState({
-      highlightedOptionId: optionId,
-    });
+  /* 
+    Handle blur event
+  */
+  handleBlur = () => {
+    const { onBlur } = this.props;
+    if (onBlur && typeof onBlur === "function") {
+      onBlur();
+      return;
+    }
   };
+  /* -------------------- Basic Functionalities -------------------- */
 
+  /* -------------------- Additional Functionalities -------------------- */
+  /* 
+  Clear functionality to 
+    - Reset current selected option,
+    - Reset last highlightedOptionId,
+    - Close options list if it is open
+  */
   clear = (): void => {
     if (this.state.showOptions) {
       this.setState({
@@ -55,6 +75,28 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
       showOptions: false,
     });
   };
+  /* -------------------- Additional Functionalities -------------------- */
+
+  /* -------------------- Dependency Functionalities -------------------- */
+
+  /*
+  Shows / Hides dropdown option container
+  */
+  showOption = (isShow: boolean): void => {
+    this.setState({
+      showOptions: isShow,
+    });
+  };
+
+  /*
+  Highlights user hovering option in the dropdown
+  */
+  setHighlightedOptionId = (optionId: string | number) => {
+    this.setState({
+      highlightedOptionId: optionId,
+    });
+  };
+  /* -------------------- Dependency Functionalities -------------------- */
 
   render(): JSX.Element {
     const { options, id, disabled /* required, , autofocus */, selectContainerStyles } = this.props;
@@ -69,6 +111,8 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
           style={selectContainerStyles}
           id={id}
           ref={basicSelectRef}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
         >
           <Value
             {...this.props}
@@ -95,6 +139,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
   }
 
   public static defaultProps: Partial<BasicSelectControlProps> = {
+    options: [],
     value: undefined,
     required: false,
     disabled: false,

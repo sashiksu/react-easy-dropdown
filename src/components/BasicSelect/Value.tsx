@@ -1,7 +1,6 @@
 import React from "react";
 import { STYLES } from "../../constants";
-import { BasicSelectOption } from "../../models/Select/SelectControlsDefinitions";
-import { BasicSelectControlProps } from "../../models/Select/SelectControlsProps";
+import { BasicSelectControlProps, BasicSelectOption } from "../../models";
 
 interface ValueControlProps {
   selectedValue: BasicSelectOption | undefined;

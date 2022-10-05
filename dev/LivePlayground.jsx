@@ -1,18 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BasicSelect, MyCounter } from "../src";
+import { SampleOptionsData } from "./optionData";
 
-const options = [
-  { id: 1, value: "Sample value", selected: false },
-  { id: 2, value: "Sample value 2", selected: false },
-  { id: 3, value: "Sample value 3", selected: false },
-  { id: 4, value: "Sample value 4", selected: false },
-  { id: 5, value: "Sample value 5", selected: false },
-  { id: 6, value: "Sample value", selected: false },
-  { id: 7, value: "Sample value 2", selected: false },
-  { id: 8, value: "Sample value 3", selected: false },
-  { id: 9, value: "Sample value 4", selected: false },
-  { id: 10, value: "Sample value 5", selected: false },
-];
 /* 
 This is the base component file;
 which developers can import developing components and test how it looks and feels
@@ -36,11 +25,11 @@ const LivePlayground = () => {
         <div className='col-md-6'></div>
         <div className='col-md-6'>
           <BasicSelect
-            options={options}
+            options={SampleOptionsData}
             onSelect={(optionId) => {
               handleSelectOne(optionId);
             }}
-            //value={options[0]}
+            //value={SampleOptionsData[0]}
             //disabled={true}
             hasLabelText={true}
             labelWrapperStyles={{ marginBottom: "0" }}
@@ -51,16 +40,18 @@ const LivePlayground = () => {
             secondaryText={
               "I'd like to pass varA,varB,varC,varD to my component, but not one by one because the number of variables inside objA and objB should be unknown."
             }
-            secondaryTextStyles={{ marginBottom: "0.5em" }}
+            secondaryTextStyles={{ marginBottom: "0.8em" }}
             //secondaryTextStyles={{ fontSize: "0.7rem" }}
             //showDropdownOnClickOfValue={true}
             //selectContainerStyles={{ backgroundColor: "aqua", borderRadius: "1rem", border: "2px dashed #001" }}
             //hasClear={false}
             //clearControlEle={<span>-x-</span>}
             //hasDivider={false}
+            //onFocus={() => { console.log("user focused !");}}
+            //onBlur={() => { console.log("user blur !");}}
           />
 
-          <BasicSelect options={options} labelText={"Please select a option your own choice :"} />
+          <BasicSelect options={SampleOptionsData} labelText={"Please select a option your own choice :"} />
         </div>
       </div>
     </div>
