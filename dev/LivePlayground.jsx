@@ -43,7 +43,7 @@ const LivePlayground = () => {
             //value={options[0]}
             //disabled={true}
             hasLabelText={true}
-            //labelWrapperStyles={{ backgroundColor: "#eff" }}
+            labelWrapperStyles={{ marginBottom: "0" }}
             labelText={"Please select a option your own choice :"}
             //labelTextStyles={{ fontWeight: "700" }}
             hasSecondarTextForLabel={true}

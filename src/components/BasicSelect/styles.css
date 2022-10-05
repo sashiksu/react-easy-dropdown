@@ -89,7 +89,7 @@ Label ends here
 .basic-select__container:focus {
     color: #212529;
     background-color: #fff;
-    border-color: #86b7fe;
+    /* border-color: #86b7fe; */
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
@@ -137,15 +137,14 @@ Dropdown element
     display: none;
     max-height: 15em;
     overflow-y: auto;
-    overflow-x: hidden;
-    /* border: .05em solid #777; */
-    border: .05em solid #ced4da;
+    overflow-x: auto;
     border-radius: .25em;
     width: 100%;
     left: 0;
     top: calc(100% + .25em);
     background-color: white;
     z-index: 100000;
+    box-shadow: 0 0 0 0.05em rgba(206, 212, 218, 1);
 }
 
 .options.show {
@@ -155,6 +154,10 @@ Dropdown element
 .option {
     padding: .25em .5em;
     cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .option.selected {

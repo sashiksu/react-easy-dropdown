@@ -20,7 +20,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     };
   }
 
-  selectOption = (option: BasicSelectOption): void => {
+  handleSelect = (option: BasicSelectOption): void => {
     const { onSelect } = this.props;
     this.setState({
       selectedValue: option,
@@ -81,7 +81,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
           <Dropdown {...this.props} showOptions={showOptions} onClickHanlder={this.showOption} />
           <BasicOptions
             options={options}
-            selectOption={this.selectOption}
+            selectOption={this.handleSelect}
             showOptions={showOptions}
             selectedValue={selectedValue}
             showOption={this.showOption}
