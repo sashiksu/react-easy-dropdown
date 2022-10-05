@@ -21,10 +21,14 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
   }
 
   selectOption = (option: BasicSelectOption): void => {
+    const { onSelect } = this.props;
     this.setState({
       selectedValue: option,
       showOptions: false,
     });
+    if (onSelect && typeof onSelect === "function") {
+      onSelect(option.id);
+    }
   };
 
   showOption = (isShow: boolean): void => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BasicSelect, MyCounter } from "../src";
 
 const options = [
@@ -18,6 +18,16 @@ This is the base component file;
 which developers can import developing components and test how it looks and feels
 */
 const LivePlayground = () => {
+  const [select1, setSelect1] = useState(null);
+
+  const handleSelectOne = (optionId) => {
+    setSelect1(optionId);
+  };
+
+  useEffect(() => {
+    console.log(select1);
+  }, [select1]);
+
   return (
     <div className='container mb-5 mt-5'>
       <h1>React Simple Select</h1>
@@ -27,6 +37,9 @@ const LivePlayground = () => {
         <div className='col-md-6'>
           <BasicSelect
             options={options}
+            onSelect={(optionId) => {
+              handleSelectOne(optionId);
+            }}
             //value={options[0]}
             //disabled={true}
             hasLabelText={true}
@@ -46,6 +59,8 @@ const LivePlayground = () => {
             //clearControlEle={<span>-x-</span>}
             //hasDivider={false}
           />
+
+          <BasicSelect options={options} labelText={"Please select a option your own choice :"} />
         </div>
       </div>
     </div>

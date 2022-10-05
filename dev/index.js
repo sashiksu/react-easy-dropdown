@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import LivePlayground from "./LivePlayground";
 
+/*
+Temporary solution for webpack not reloading on file changes
+*/
 if (module.hot) {
   module.hot.accept();
 }
@@ -16,3 +19,5 @@ root.render(
     <LivePlayground />
   </React.StrictMode>,
 );
+
+/* root.render(<LivePlayground />); */

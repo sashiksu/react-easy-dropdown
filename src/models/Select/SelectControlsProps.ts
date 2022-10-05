@@ -10,7 +10,9 @@ interface BasicSelectControlProps {
   required?: boolean; //whether select is required field or not
   disabled?: boolean; //whether select  is disabled or not
   autofocus?: boolean; //whether need to focus select control
-
+  onSelect: (optionId: string | number) => string | number;
+  onBlur?: () => void;
+  onFocus?: () => void;
   /* 
   Additionally introduced functionality related props
   Props for :
@@ -22,6 +24,7 @@ interface BasicSelectControlProps {
     - Clear
     - Divider
     - Dropdown
+    - Options Container
   */
   //additional styles related props
   wrapperStyles?: object; //JSX style object for outer most wrapper (wrapper of lebel and select component)
@@ -52,6 +55,12 @@ interface BasicSelectControlProps {
   //dropdown related props
   hasDropdown?: boolean;
   dropdownEle?: React.ReactNode;
+
+  //options container related props
+  optionsWrapperStyles?: object;
+  optionStyles?: object;
+  selectedOptionStyles?: object;
+  highlightedOtionStyles?: object;
 }
 
 interface BasicOptionsProps {

@@ -138,13 +138,14 @@ Dropdown element
     max-height: 15em;
     overflow-y: auto;
     overflow-x: hidden;
-    border: .05em solid #777;
+    /* border: .05em solid #777; */
+    border: .05em solid #ced4da;
     border-radius: .25em;
     width: 100%;
     left: 0;
     top: calc(100% + .25em);
     background-color: white;
-    z-index: 100;
+    z-index: 100000;
 }
 
 .options.show {
