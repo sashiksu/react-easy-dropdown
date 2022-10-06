@@ -76,6 +76,8 @@ Label ends here
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+
+
 .basic-select__container:focus.disabled-wrapper {
     background-color: #e9ecef;
     border-color: #ced4da;
@@ -86,12 +88,22 @@ Label ends here
     -ms-user-select: none;
 }
 
+
+
 .basic-select__container:focus {
     color: #212529;
     background-color: #fff;
     /* border-color: #86b7fe; */
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.required {
+    box-shadow: 0 0 0 0.25rem rgba(255, 2, 2, 0.25);
+}
+
+.basic-select__container:focus.required {
+    box-shadow: 0 0 0 0.25rem rgba(255, 2, 2, 0.25);
 }
 
 .basic-select__value {

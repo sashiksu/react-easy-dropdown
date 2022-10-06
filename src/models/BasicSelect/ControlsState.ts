@@ -6,6 +6,7 @@ interface BasicSelectControlState {
   selectedValue: BasicSelectOption | undefined;
   showOptions: boolean;
   highlightedOptionId: string | number | null;
+  hasUserTouched: boolean;
 }
 
 export { BasicSelectControlState };

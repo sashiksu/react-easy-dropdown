@@ -22,6 +22,9 @@ interface BasicSelectControlProps {
   required?: boolean; //whether select is required field or not
   disabled?: boolean; //whether select  is disabled or not
   autofocus?: boolean; //whether need to focus select control
+  userTriedSubmit?: boolean;
+  
+  // select events
   onSelect: (optionId: string | number) => string | number;
   onBlur?: () => void;
   onFocus?: () => void;

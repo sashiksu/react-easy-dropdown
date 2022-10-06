@@ -1,7 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { BasicSelect, MyCounter } from "../src";
-import { SampleOptionsData } from "./optionData";
-
+import React from "react";
+import { BasicSelect } from "../src";
+const SampleOptionsData = [
+  { id: 1, value: "Option 1" },
+  { id: 2, value: "Option 2" },
+  { id: 3, value: "Option 3" },
+  { id: 4, value: "Option 4" },
+  { id: 5, value: "Option 5" },
+  { id: 6, value: "Option 6" },
+  { id: 7, value: "Option 7" },
+  { id: 8, value: "Option 8" },
+  { id: 9, value: "Option 9" },
+  { id: 10, value: "Option 10" },
+];
 /* 
 This is the base component file;
 which developers can import developing components and test how it looks and feels
@@ -13,13 +23,15 @@ const LivePlayground = () => {
         <div className='col-md-6'></div>
         <div className='col-md-6'>
           <BasicSelect
+            required={true}
+            userTriedSubmit={false}
             options={SampleOptionsData}
             onSelect={(optionId) => {
               console.log(optionId);
             }}
             wrapperStyles={{ backgroundColor: "#f2f2f2" }}
             value={SampleOptionsData[3]}
-            disabled={false}
+            //disabled={true}
             hasLabelText={true}
             labelWrapperStyles={{ marginBottom: "0" }}
             labelText={"Please select a option :"}
@@ -42,8 +54,6 @@ const LivePlayground = () => {
               console.log("user blur !");
             }}
           />
-
-          <BasicSelect options={SampleOptionsData} labelText={"Please select a option your own choice :"} />
         </div>
       </div>
     </div>

@@ -1,5 +1,7 @@
 import React, { Component, createRef } from "react";
 import { BasicSelectControlProps, BasicSelectControlState, BasicSelectOption } from "../../models";
+import ClearIcon from "../Icons/ClearIcon";
+import DropdownIcon from "../Icons/DropdownIcon";
 import BasicOptions from "./BasicOptions";
 import Clear from "./Clear";
 import Divider from "./Divider";
@@ -15,6 +17,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
       selectedValue: props.value,
       showOptions: false,
       highlightedOptionId: null,
+      hasUserTouched: false,
     };
   }
   /* -------------------- Basic Functionalities -------------------- */
@@ -26,6 +29,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     this.setState({
       selectedValue: option,
       showOptions: false,
+      hasUserTouched: true,
     });
     if (onSelect && typeof onSelect === "function") {
       onSelect(option.id);
@@ -73,6 +77,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
       highlightedOptionId: null,
       selectedValue: undefined,
       showOptions: false,
+      hasUserTouched: true,
     });
   };
   /* -------------------- Additional Functionalities -------------------- */
@@ -86,6 +91,9 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     this.setState({
       showOptions: isShow,
     });
+    if (isShow) {
+      this.setState({ hasUserTouched: true });
+    }
   };
 
   /*
@@ -99,15 +107,18 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
   /* -------------------- Dependency Functionalities -------------------- */
 
   render(): JSX.Element {
-    const { options, id, disabled /* required, , autofocus */, wrapperStyles, selectContainerStyles } = this.props;
-    const { basicSelectRef, selectedValue, showOptions, highlightedOptionId } = this.state;
+    const { options, id, disabled, required, /*, autofocus */ userTriedSubmit, wrapperStyles, selectContainerStyles } =
+      this.props;
+    const { basicSelectRef, selectedValue, showOptions, highlightedOptionId, hasUserTouched } = this.state;
 
     return (
       <div className={`basic-select`} style={wrapperStyles}>
         <Label {...this.props} />
         <div
           tabIndex={0}
-          className={`basic-select__container ${disabled ? "disabled-wrapper" : ""}`}
+          className={`basic-select__container ${disabled ? "disabled-wrapper" : ""} ${
+            hasUserTouched && userTriedSubmit && required ? "required" : ""
+          }`}
           style={selectContainerStyles}
           id={id}
           ref={basicSelectRef}
@@ -144,29 +155,26 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     required: false,
     disabled: false,
     autofocus: false,
+    //userTriedSubmit: false,
     //additionally introduced functionality related props
 
     hasLabelText: false,
-    labelWrapperStyles: {},
 
     labelText: "Select a option:",
-    labelTextStyles: {},
 
     hasSecondarTextForLabel: false,
     secondaryText: "",
-    secondaryTextStyles: {},
-
-    selectContainerStyles: {},
 
     showDropdownOnClickOfValue: false,
 
     hasClear: true,
-    clearControlEle: <span>&times;</span>,
+    clearControlEle: <ClearIcon />,
 
     hasDivider: true,
 
     hasDropdown: true,
-    dropdownEle: <span>￬</span>,
+    //dropdownEle: <span>￬</span>,
+    dropdownEle: <DropdownIcon />,
   };
 }
 
