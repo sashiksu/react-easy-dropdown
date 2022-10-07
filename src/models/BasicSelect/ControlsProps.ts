@@ -1,5 +1,5 @@
 import React from "react";
-import { BasicSelectOption } from "./ControlsDefinitions";
+import { BasicSelectOption, MockMinimulEvent } from "./ControlsDefinitions";
 import {
   HighlightedOptionStyles,
   LabelTextStyles,
@@ -13,9 +13,6 @@ import {
   WrapperStyles
 } from "./ControlStyles";
 
-interface MockMinimulEvent {
-  target: { name: string; value: string };
-}
 interface BasicSelectControlProps {
   //common select component related functionality props
   options: BasicSelectOption[];

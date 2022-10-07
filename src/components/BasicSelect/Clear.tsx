@@ -1,18 +1,22 @@
 import React from "react";
-import { BasicSelectControlProps } from "../../models";
+import { BasicSelectControlProps, BasicSelectOption } from "../../models";
 
 interface ClearControlProps {
   clearHandler: () => void;
+  selectedValue: BasicSelectOption | undefined;
 }
 
 const Clear = (props: BasicSelectControlProps & ClearControlProps) => {
-  const { disabled, hasClear, clearControlEle, clearHandler } = props;
+  const { disabled, hasClear, clearControlEle, clearHandler, selectedValue } = props;
   return (
     <>
       {hasClear && (
-        <button className={`basic-select__clear-btn ${disabled ? "no-events" : ""}`} onClick={() => clearHandler()}>
+        <div
+          className={`basic-select__clear-btn ${disabled ? "no-events" : ""}`}
+          onClick={() => (selectedValue ? clearHandler() : {})}
+        >
           {clearControlEle}
-        </button>
+        </div>
       )}
     </>
   );

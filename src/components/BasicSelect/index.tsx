@@ -137,7 +137,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
             showOptions={showOptions}
             onClickHanlder={this.showOption}
           />
-          <Clear {...this.props} clearHandler={this.clear} />
+          <Clear {...this.props} clearHandler={this.clear} selectedValue={selectedValue} />
           <Divider {...this.props} />
           <Dropdown {...this.props} showOptions={showOptions} onClickHanlder={this.showOption} />
           <BasicOptions
