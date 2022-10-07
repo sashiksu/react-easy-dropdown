@@ -25,14 +25,14 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     Handle user selection 
   */
   handleSelect = (option: BasicSelectOption): void => {
-    const { onSelect } = this.props;
+    const { onSelect, name } = this.props;
     this.setState({
       selectedValue: option,
       showOptions: false,
-      hasUserTouched: true,
     });
     if (onSelect && typeof onSelect === "function") {
-      onSelect(option.id);
+      const mockMinimulEvent = { target: { name: name, value: option.id.toString() } };
+      onSelect(mockMinimulEvent);
       return;
     }
   };
@@ -77,8 +77,10 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
       highlightedOptionId: null,
       selectedValue: undefined,
       showOptions: false,
-      hasUserTouched: true,
     });
+    if (this.state.selectedValue !== undefined) {
+      this.setState({ hasUserTouched: true });
+    }
   };
   /* -------------------- Additional Functionalities -------------------- */
 
@@ -91,9 +93,9 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     this.setState({
       showOptions: isShow,
     });
-    if (isShow) {
+    /* if (isShow && this.state.selectedValue === undefined) {
       this.setState({ hasUserTouched: true });
-    }
+    } */
   };
 
   /*
@@ -103,6 +105,10 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     this.setState({
       highlightedOptionId: optionId,
     });
+  };
+
+  setHasUserTouched = () => {
+    this.setState({ hasUserTouched: true });
   };
   /* -------------------- Dependency Functionalities -------------------- */
 
@@ -151,11 +157,12 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
 
   public static defaultProps: Partial<BasicSelectControlProps> = {
     options: [],
+    name: "select-component",
     value: undefined,
     required: false,
     disabled: false,
     autofocus: false,
-    //userTriedSubmit: false,
+    userTriedSubmit: false,
     //additionally introduced functionality related props
 
     hasLabelText: false,
@@ -173,7 +180,6 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     hasDivider: true,
 
     hasDropdown: true,
-    //dropdownEle: <span>￬</span>,
     dropdownEle: <DropdownIcon />,
   };
 }

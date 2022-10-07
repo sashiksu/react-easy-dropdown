@@ -13,19 +13,22 @@ import {
   WrapperStyles
 } from "./ControlStyles";
 
+interface MockMinimulEvent {
+  target: { name: string; value: string };
+}
 interface BasicSelectControlProps {
   //common select component related functionality props
   options: BasicSelectOption[];
+  name: string; //name for the select
   value?: BasicSelectOption;
-  name?: string; //name for the select
   id?: string; //id for the select
   required?: boolean; //whether select is required field or not
   disabled?: boolean; //whether select  is disabled or not
   autofocus?: boolean; //whether need to focus select control
   userTriedSubmit?: boolean;
-  
+
   // select events
-  onSelect: (optionId: string | number) => string | number;
+  onSelect: (event: MockMinimulEvent) => MockMinimulEvent;
   onBlur?: () => void;
   onFocus?: () => void;
   /* 
