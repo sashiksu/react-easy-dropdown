@@ -1,10 +1,15 @@
 import React, { Component, createRef } from "react";
-import { BasicSelectOption } from "../../models/Select/SelectControlsDefinitions";
-import { BasicSelectControlProps } from "../../models/Select/SelectControlsProps";
-import { BasicSelectControlState } from "../../models/Select/SelectControlsState";
+import { BasicSelectControlProps, BasicSelectControlState, BasicSelectOption } from "../../models";
+import ClearIcon from "../Icons/ClearIcon";
+import DropdownIcon from "../Icons/DropdownIcon";
+import BasicOptions from "./BasicOptions";
+import Clear from "./Clear";
+import Divider from "./Divider";
+import Dropdown from "./Dropdown";
+import Label from "./Label";
 import "./styles.css";
-
-export default class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlState> {
+import Value from "./Value";
+class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlState> {
   constructor(props: BasicSelectControlProps) {
     super(props);
     this.state = {
@@ -12,29 +17,57 @@ export default class BasicSelect extends Component<BasicSelectControlProps, Basi
       selectedValue: props.value,
       showOptions: false,
       highlightedOptionId: null,
+      hasUserTouched: false,
     };
   }
-
-  selectOption = (option: BasicSelectOption): void => {
+  /* -------------------- Basic Functionalities -------------------- */
+  /* 
+    Handle user selection 
+  */
+  handleSelect = (option: BasicSelectOption): void => {
+    const { onSelect, name } = this.props;
     this.setState({
       selectedValue: option,
       showOptions: false,
     });
+    if (onSelect && typeof onSelect === "function") {
+      const mockMinimulEvent = { target: { name: name, value: option.id.toString() } };
+      onSelect(mockMinimulEvent);
+      return;
+    }
   };
 
-  showOption = (isShow: boolean): void => {
-    this.setState({
-      showOptions: isShow,
-    });
+  /* 
+    Handle focus event
+  */
+  handleFocus = () => {
+    const { onFocus } = this.props;
+    if (onFocus && typeof onFocus === "function") {
+      onFocus();
+      return;
+    }
   };
 
-  setHighlightedOptionId = (optionId: string | number) => {
-    this.setState({
-      highlightedOptionId: optionId,
-    });
+  /* 
+    Handle blur event
+  */
+  handleBlur = () => {
+    const { onBlur } = this.props;
+    if (onBlur && typeof onBlur === "function") {
+      onBlur();
+      return;
+    }
   };
+  /* -------------------- Basic Functionalities -------------------- */
 
-  reset = (): void => {
+  /* -------------------- Additional Functionalities -------------------- */
+  /* 
+  Clear functionality to 
+    - Reset current selected option,
+    - Reset last highlightedOptionId,
+    - Close options list if it is open
+  */
+  clear = (): void => {
     if (this.state.showOptions) {
       this.setState({
         showOptions: false,
@@ -42,59 +75,113 @@ export default class BasicSelect extends Component<BasicSelectControlProps, Basi
     }
     this.setState({
       highlightedOptionId: null,
+      selectedValue: undefined,
       showOptions: false,
+    });
+    /* if (this.state.selectedValue !== undefined) {
+      this.setState({ hasUserTouched: true });
+    } */
+  };
+  /* -------------------- Additional Functionalities -------------------- */
+
+  /* -------------------- Dependency Functionalities -------------------- */
+
+  /*
+  Shows / Hides dropdown option container
+  */
+  showOption = (isShow: boolean): void => {
+    this.setState({
+      showOptions: isShow,
+    });
+    /* if (isShow && this.state.selectedValue === undefined) {
+      this.setState({ hasUserTouched: true });
+    } */
+  };
+
+  /*
+  Highlights user hovering option in the dropdown
+  */
+  setHighlightedOptionId = (optionId: string | number) => {
+    this.setState({
+      highlightedOptionId: optionId,
     });
   };
 
-  onBodyClick = (e: Event): void => {
-    if (this.state.basicSelectRef.current!.contains(e.target as HTMLElement)) {
-      return;
-    }
-    this.showOption(false);
+  setHasUserTouched = () => {
+    this.setState({ hasUserTouched: true });
   };
+  /* -------------------- Dependency Functionalities -------------------- */
 
-  componentDidMount(): void {
-    document.addEventListener("click", this.onBodyClick);
-  }
-
-  componentWillUnmount(): void {
-    document.removeEventListener("click", this.onBodyClick);
-  }
-
-  render(): React.ReactNode {
-    const { options, id /*required, disabled, autofocus */ } = this.props;
-    const { basicSelectRef, selectedValue, showOptions, highlightedOptionId } = this.state;
+  render(): JSX.Element {
+    const { options, id, disabled, required, /*, autofocus */ userTriedSubmit, wrapperStyles, selectContainerStyles } =
+      this.props;
+    const { basicSelectRef, selectedValue, showOptions, highlightedOptionId, hasUserTouched } = this.state;
 
     return (
-      <>
-        <div tabIndex={0} className='basic-select-container' id={id} ref={basicSelectRef}>
-          <span className='value'>{selectedValue.value}</span>
-          <button className='clear-btn' onClick={() => this.reset()}>
-            &times;
-          </button>
-          <div className='divider'></div>
-          <div className='caret' onClick={() => this.showOption(!showOptions)}></div>
-          <ul className={`options ${showOptions ? "show" : ""}`}>
-            {options.map((option) => {
-              return (
-                <li
-                  className={`option ${selectedValue.id == option.id ? "selected" : ""} ${
-                    highlightedOptionId == option.id ? "highlighted" : ""
-                  }`}
-                  key={option.id}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    this.selectOption(option);
-                  }}
-                  onMouseEnter={() => this.setHighlightedOptionId(option.id)}
-                >
-                  {option.value}
-                </li>
-              );
-            })}
-          </ul>
+      <div className={`basic-select`} style={wrapperStyles}>
+        <Label {...this.props} />
+        <div
+          tabIndex={0}
+          className={`basic-select__container ${disabled ? "disabled-wrapper" : ""} ${
+            hasUserTouched && userTriedSubmit && required ? "required" : ""
+          }`}
+          style={selectContainerStyles}
+          id={id}
+          ref={basicSelectRef}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+        >
+          <Value
+            {...this.props}
+            selectedValue={selectedValue}
+            showOptions={showOptions}
+            onClickHanlder={this.showOption}
+          />
+          <Clear {...this.props} clearHandler={this.clear} />
+          <Divider {...this.props} />
+          <Dropdown {...this.props} showOptions={showOptions} onClickHanlder={this.showOption} />
+          <BasicOptions
+            options={options}
+            selectOption={this.handleSelect}
+            showOptions={showOptions}
+            selectedValue={selectedValue}
+            showOption={this.showOption}
+            highlightedOptionId={highlightedOptionId}
+            setHighlightedOptionId={this.setHighlightedOptionId}
+            basicSelectRef={this.state.basicSelectRef}
+          />
         </div>
-      </>
+      </div>
     );
   }
+
+  public static defaultProps: Partial<BasicSelectControlProps> = {
+    options: [],
+    name: "select-component",
+    value: undefined,
+    required: false,
+    disabled: false,
+    autofocus: false,
+    userTriedSubmit: false,
+    //additionally introduced functionality related props
+
+    hasLabelText: false,
+
+    labelText: "Select a option:",
+
+    hasSecondarTextForLabel: false,
+    secondaryText: "",
+
+    showDropdownOnClickOfValue: false,
+
+    hasClear: true,
+    clearControlEle: <ClearIcon />,
+
+    hasDivider: true,
+
+    hasDropdown: true,
+    dropdownEle: <DropdownIcon />,
+  };
 }
+
+export default BasicSelect;

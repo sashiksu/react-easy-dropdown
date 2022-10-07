@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "build": "npm run build:esm && npm run build:cjs",
+    "build": "npm run build:esm && npm run build:cjs && npm run build:css",
     "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs"
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "build:css": "node-sass src/components/BasicSelect/styles.css dist/esm/components/BasicSelect/styles.css --output-style compressed"
   },
   "keywords": [
     "react",
@@ -35,6 +36,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "node-sass": "^7.0.3",
     "prettier": "^2.7.1",
     "raw-loader": "^4.0.2",
     "react": "^18.2.0",
