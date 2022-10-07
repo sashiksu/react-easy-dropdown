@@ -93,5 +93,9 @@ interface ClearControlProps {
   clearHandler: () => void;
   selectedValue: BasicSelectOption | undefined;
 }
-
-export { BasicSelectControlProps, BasicOptionsProps, ClearControlProps };
+interface ValueControlProps {
+  selectedValue: BasicSelectOption | undefined;
+  showOptions: boolean;
+  onClickHanlder: (showOptions: boolean) => void;
+}
+export { BasicSelectControlProps, BasicOptionsProps, ClearControlProps, ValueControlProps };

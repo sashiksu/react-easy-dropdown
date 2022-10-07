@@ -53,7 +53,6 @@ const LivePlayground = () => {
                 autoComplete='off'
                 onChange={(event) => handleChange(event)}
                 required={true}
-                disabled={true}
               />
             </div>
             <BasicSelect

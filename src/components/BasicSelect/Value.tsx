@@ -1,12 +1,7 @@
 import React from "react";
 import { STYLES } from "../../constants";
-import { BasicSelectControlProps, BasicSelectOption } from "../../models";
+import { BasicSelectControlProps, ValueControlProps } from "../../models";
 
-interface ValueControlProps {
-  selectedValue: BasicSelectOption | undefined;
-  showOptions: boolean;
-  onClickHanlder: (showOptions: boolean) => void;
-}
 const Value = (props: BasicSelectControlProps & ValueControlProps) => {
   const { disabled, showDropdownOnClickOfValue, selectedValue, showOptions, onClickHanlder } = props;
   return (
