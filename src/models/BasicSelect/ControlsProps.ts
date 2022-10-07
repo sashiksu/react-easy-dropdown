@@ -89,4 +89,9 @@ interface BasicOptionsProps {
   basicSelectRef: React.RefObject<HTMLDivElement>;
 }
 
-export { BasicSelectControlProps, BasicOptionsProps };
+interface ClearControlProps {
+  clearHandler: () => void;
+  selectedValue: BasicSelectOption | undefined;
+}
+
+export { BasicSelectControlProps, BasicOptionsProps, ClearControlProps };

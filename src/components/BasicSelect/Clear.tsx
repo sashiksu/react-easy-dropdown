@@ -1,10 +1,5 @@
 import React from "react";
-import { BasicSelectControlProps, BasicSelectOption } from "../../models";
-
-interface ClearControlProps {
-  clearHandler: () => void;
-  selectedValue: BasicSelectOption | undefined;
-}
+import { BasicSelectControlProps, ClearControlProps } from "../../models";
 
 const Clear = (props: BasicSelectControlProps & ClearControlProps) => {
   const { disabled, hasClear, clearControlEle, clearHandler, selectedValue } = props;
