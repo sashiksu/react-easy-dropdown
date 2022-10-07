@@ -10,9 +10,10 @@ Outer most wrapper starts here
     pointer-events: none;
 }
 
-.disabled-wrapper {
-    cursor: not-allowed;
-    background-color: #e9ecef;
+.basic-select__container.disabled-wrapper {
+    pointer-events: none;
+    color: #6c757d;
+    background-color: red;
 }
 
 /* 
@@ -78,7 +79,7 @@ Label ends here
 
 
 
-.basic-select__container:focus.disabled-wrapper {
+/* .basic-select__container:focus.disabled-wrapper {
     background-color: #e9ecef;
     border-color: #ced4da;
     box-shadow: none;
@@ -86,7 +87,7 @@ Label ends here
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-}
+} */
 
 
 
@@ -115,7 +116,7 @@ Label ends here
 
 .basic-select__clear-btn {
     background: none;
-    color: #777;
+    /* color: #777; */
     border: none;
     outline: none;
     cursor: pointer;

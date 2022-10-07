@@ -52,6 +52,7 @@ const LivePlayground = () => {
                 autoComplete='off'
                 onChange={(event) => handleChange(event)}
                 required={true}
+                disabled={true}
               />
             </div>
             <BasicSelect
@@ -62,15 +63,15 @@ const LivePlayground = () => {
               onSelect={(event) => {
                 handleChange(event);
               }}
-              wrapperStyles={{ backgroundColor: "#f2f2f2" }}
+              //wrapperStyles={{ backgroundColor: "#f2f2f2" }}
               //value={SampleOptionsData[3]}
               //disabled={true}
               hasLabelText={true}
               labelWrapperStyles={{ marginBottom: "0" }}
               labelText={"Please select a option :"}
-              labelTextStyles={{ fontWeight: "700" }}
+              //labelTextStyles={{ fontWeight: "700" }}
               hasSecondarTextForLabel={true}
-              secondaryTextWrapperStyle={{ backgroundColor: "#eee" }}
+              //secondaryTextWrapperStyle={{ backgroundColor: "#eee" }}
               secondaryText={
                 "I'd like to pass varA,varB,varC,varD to my component, but not one by one because the number of variables inside objA and objB should be unknown."
               }

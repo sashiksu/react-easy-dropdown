@@ -78,9 +78,9 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
       selectedValue: undefined,
       showOptions: false,
     });
-    if (this.state.selectedValue !== undefined) {
+    /* if (this.state.selectedValue !== undefined) {
       this.setState({ hasUserTouched: true });
-    }
+    } */
   };
   /* -------------------- Additional Functionalities -------------------- */
 
