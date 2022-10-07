@@ -10,7 +10,7 @@ import {
   SecondaryTextStyles,
   SelectContainerStyles,
   SelectedOptionStyles,
-  WrapperStyles
+  WrapperStyles,
 } from "./ControlStyles";
 
 interface BasicSelectControlProps {
