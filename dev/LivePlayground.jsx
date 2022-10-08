@@ -28,7 +28,6 @@ const LivePlayground = () => {
   };
 
   const handleSubmit = (event) => {
-    //debugger;
     event.preventDefault();
     console.log(formInfo);
   };
