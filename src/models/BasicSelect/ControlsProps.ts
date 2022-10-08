@@ -43,7 +43,6 @@ interface BasicSelectControlProps {
   */
   //additional styles related props
   wrapperStyles?: WrapperStyles; //JSX style object for outer most wrapper (wrapper of lebel and select component)
-
   //label related props
   hasLabelText?: boolean; //this will add label to top of select component
   labelWrapperStyles?: LabelWrapperStyles; // JSX style obj for label component
@@ -55,7 +54,6 @@ interface BasicSelectControlProps {
   secondaryTextWrapperStyle?: SecondaryLabelWrapperStyles;
   secondaryText?: string;
   secondaryTextStyles?: SecondaryTextStyles;
-
   //select component container related props
   selectContainerStyles: SelectContainerStyles;
   //value display props
@@ -63,14 +61,11 @@ interface BasicSelectControlProps {
   //clear related props
   hasClear?: boolean;
   clearControlEle?: React.ReactNode;
-
   //divider related props
   hasDivider?: boolean;
-
   //dropdown related props
   hasDropdown?: boolean;
   dropdownEle?: React.ReactNode;
-
   //options container related props
   optionsWrapperStyles?: OptionsWrapperStyles;
   optionStyles?: OptionStyles;

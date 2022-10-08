@@ -100,7 +100,6 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     });
     //show required indicator when user have opened dropdown and not select any option
     if (this.state.noOfTimesOptionsShowed > 0 && this.state.selectedValue === undefined) {
-      console.log("no of times user touched : " + this.state.noOfTimesOptionsShowed);
       this.setHasUserTouched(true);
     }
     //hide required indicator when user select option from dropdown
@@ -171,31 +170,51 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
   }
 
   public static defaultProps: Partial<BasicSelectControlProps> = {
+    //common select component related functionality props
     options: [],
     name: "select-component",
     value: undefined,
+    id: "select-component",
     required: false,
     disabled: false,
     autofocus: false,
     userTriedSubmit: false,
+
+    //select events
+    //onSelect: () => {return;},
+    //onBlur: () => {return;},
+    //onFocus: () => {return;},
+
     //additionally introduced functionality related props
-
+    //wrapperStyles: {},
+    //label related props
     hasLabelText: false,
-
+    //labelWrapperStyles:{},
+    //label text related props
     labelText: "Select a option:",
-
+    //labelTextStyles: {},
+    //secondary label text related props
     hasSecondarTextForLabel: false,
+    //secondaryTextWrapperStyle:{},
     secondaryText: "",
-
+    //secondaryTextStyles:{},
+    //select component container related props
+    //selectContainerStyles:{},
+    //value display props
     showDropdownOnClickOfValue: false,
-
+    //clear related props
     hasClear: true,
     clearControlEle: <ClearIcon />,
-
+    //divider related props
     hasDivider: true,
-
+    //dropdown related props
     hasDropdown: true,
     dropdownEle: <DropdownIcon />,
+    //options container related props
+    //optionsWrapperStyles:{},
+    //optionStyles:{},
+    //selectedOptionStyles:{},
+    //highlightedOtionStyles:{},
   };
 }
 
