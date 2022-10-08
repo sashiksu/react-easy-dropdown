@@ -14,10 +14,17 @@ Outer most wrapper starts here
     pointer-events: none;
 }
 
+/* Styles when select component become disabled */
 .basic-select__container.disabled-wrapper {
     pointer-events: none;
     color: var(--component-color);
-    background-color: red;
+    background-color: #E9ECEF;
+    border-color: #ced4da;
+    box-shadow: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 /* 
@@ -37,7 +44,7 @@ Label starts here
 }
 
 .select__label--wrapper {
-    margin-bottom: .5em;
+    margin: 0;
 }
 
 .select__label--text {
@@ -46,7 +53,7 @@ Label starts here
 }
 
 .select__label--secondary-wrapper {
-    margin: 0;
+    margin-bottom: 0.3em;
 }
 
 .select__label--secondary-text {
@@ -188,4 +195,9 @@ Dropdown element
 .option.highlighted {
     background-color: rgba(13, 110, 253, .50);
     color: white
+}
+
+.select__label--wrapper+.select__label--secondary-wrapper {
+    margin-top: 0;
+    color: red;
 }
