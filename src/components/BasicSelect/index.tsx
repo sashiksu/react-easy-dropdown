@@ -18,6 +18,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
       showOptions: false,
       highlightedOptionId: null,
       hasUserTouched: false,
+      noOfTimesOptionsShowed: 0,
     };
   }
   /* -------------------- Basic Functionalities -------------------- */
@@ -77,10 +78,12 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
       highlightedOptionId: null,
       selectedValue: undefined,
       showOptions: false,
+      hasUserTouched: false,
     });
-    /* if (this.state.selectedValue !== undefined) {
-      this.setState({ hasUserTouched: true });
-    } */
+    //show required indicator when user have cleared selected option
+    if (this.state.noOfTimesOptionsShowed > 0 && this.state.selectedValue === undefined) {
+      this.setHasUserTouched(true);
+    }
   };
   /* -------------------- Additional Functionalities -------------------- */
 
@@ -92,10 +95,18 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
   showOption = (isShow: boolean): void => {
     this.setState({
       showOptions: isShow,
+      //keep increment when user open or move out(click outside) of dropdown list(options)
+      noOfTimesOptionsShowed: this.state.noOfTimesOptionsShowed + 1,
     });
-    /* if (isShow && this.state.selectedValue === undefined) {
-      this.setState({ hasUserTouched: true });
-    } */
+    //show required indicator when user have opened dropdown and not select any option
+    if (this.state.noOfTimesOptionsShowed > 0 && this.state.selectedValue === undefined) {
+      console.log("no of times user touched : " + this.state.noOfTimesOptionsShowed);
+      this.setHasUserTouched(true);
+    }
+    //hide required indicator when user select option from dropdown
+    if (this.state.noOfTimesOptionsShowed > 0 && this.state.selectedValue !== undefined) {
+      this.setHasUserTouched(false);
+    }
   };
 
   /*
@@ -107,9 +118,13 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     });
   };
 
-  setHasUserTouched = () => {
-    this.setState({ hasUserTouched: true });
+  /*
+  Marking component to track whether user touched it or not
+  */
+  setHasUserTouched = (hasTouched: boolean) => {
+    this.setState({ hasUserTouched: hasTouched });
   };
+
   /* -------------------- Dependency Functionalities -------------------- */
 
   render(): JSX.Element {
@@ -123,7 +138,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
         <div
           tabIndex={0}
           className={`basic-select__container ${disabled ? "disabled-wrapper" : ""} ${
-            hasUserTouched && userTriedSubmit && required ? "required" : ""
+            (hasUserTouched && required) || (required && userTriedSubmit) ? "required" : ""
           }`}
           style={selectContainerStyles}
           id={id}
