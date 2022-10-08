@@ -138,7 +138,9 @@ export default LivePlayground;
 
 ### Props Definitions :
 
-| Props    | Definition                    | Is Required | Default Value | Example Value     |
-| -------- | ----------------------------- | ----------- | ------------- | ----------------- |
-| name     | name attribute of component   | Yes         | "select-comp" | "states-dropdown" |
-| required | whether required field or not | No          | false         | true              |
+| Props      | Definition                                                                   | Is Required | Default Value   | Example Value                                                  |
+| ---------- | ---------------------------------------------------------------------------- | ----------- | --------------- | -------------------------------------------------------------- |
+| `options`  | sturctured objects of array where each object have id and name as properties | No          | `[]`            | `[{ id: 1, value: "Option 1" },{ id: 2, value: "Option 2" },]` |
+| `name`     | name attribute of component                                                  | Yes         | `"select-comp"` | `"states-dropdown"`                                            |
+| `value`    | Default value/ selected value                                                | No          | `undefined`     | `{ id: 1, value: "Option 1" }`                                 |
+| `required` | whether required field or not                                                | No          | `false`         | `true`                                                         |
