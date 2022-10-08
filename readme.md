@@ -1,15 +1,26 @@
 # React Simple Select
+
 ## A simple select component for the React Library.
+
 **Contains minimum no of dependencies !**
->In the v1.0.0 provided basic select component with powerfull customization options.
+
+> In the v1.0.0 provided basic select component with powerfull customization options.
+
 ---
-### Steps :
+
+<br/>
+
+### Two Steps :
+
 1. Install it <br/>
+
 ```
 npm i react-simple-select
 ```
+
 2. Import it to your React Component and use.
-*(See below example with example form)*<br/>
+   _(See below example with example form)_<br/>
+
 ```
 import React, { useState } from "react";
 import { BasicSelect } from "../src";
@@ -122,3 +133,12 @@ const LivePlayground = () => {
 export default LivePlayground;
 
 ```
+
+---
+
+### Props Definitions :
+
+| Props    | Definition                    | Is Required | Default Value | Example Value     |
+| -------- | ----------------------------- | ----------- | ------------- | ----------------- |
+| name     | name attribute of component   | Yes         | "select-comp" | "states-dropdown" |
+| required | whether required field or not | No          | false         | true              |
