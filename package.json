@@ -9,6 +9,11 @@
     "type": "git",
     "url": "https://github.com/sashiksu/react-simple-select.git"
   },
+  "bugs": {
+    "url": "https://github.com/sashiksu/react-simple-select/issues",
+    "email": "sashiksu@outlook.com"
+  },
+  "homepage": "https://github.com/sashiksu/react-simple-select#readme",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
