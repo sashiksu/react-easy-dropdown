@@ -177,7 +177,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     id: "select-component",
     required: false,
     disabled: false,
-    autofocus: false,
+    //autofocus: false,
     userTriedSubmit: false,
 
     //select events

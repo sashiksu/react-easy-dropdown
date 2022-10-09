@@ -136,11 +136,23 @@ export default LivePlayground;
 
 ---
 
+### To see all prop details of `<BasicSelect/>` component refer below table.
+
+---
+
 ### Props Definitions :
 
-| Props      | Definition                                                                   | Is Required | Default Value   | Example Value                                                  |
-| ---------- | ---------------------------------------------------------------------------- | ----------- | --------------- | -------------------------------------------------------------- |
-| `options`  | sturctured objects of array where each object have id and name as properties | No          | `[]`            | `[{ id: 1, value: "Option 1" },{ id: 2, value: "Option 2" },]` |
-| `name`     | name attribute of component                                                  | Yes         | `"select-comp"` | `"states-dropdown"`                                            |
-| `value`    | Default value/ selected value                                                | No          | `undefined`     | `{ id: 1, value: "Option 1" }`                                 |
-| `required` | whether required field or not                                                | No          | `false`         | `true`                                                         |
+| Props             | Definition                                                                                                                                                             | Is Required | Default Value   | Example Value                                                  |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | --------------- | -------------------------------------------------------------- |
+| `options`         | sturctured objects of array where each object have id and name as properties                                                                                           | No          | `[]`            | `[{ id: 1, value: "Option 1" },{ id: 2, value: "Option 2" },]` |
+| `name`            | name attribute of component                                                                                                                                            | Yes         | `"select-comp"` | `"country-dropdown"`                                           |
+| `value`           | Default value/ selected value                                                                                                                                          | No          | `undefined`     | `{ id: 1, value: "Option 1" }`                                 |     |
+| `id`              | id attribute of component                                                                                                                                              | No          | `"select-comp"` | `"country-dropdown"`                                           |
+| `required`        | whether required field or not                                                                                                                                          | No          | `false`         | `true`                                                         |
+| `disabled`        | whether component is in disabled mode or not                                                                                                                           | No          | `false`         | `true`                                                         |
+| `userTriedSubmit` | this prop can use for validation purpose, when user tries submit and got validation errors can mark component with red outline along with setting `required` to `true` | No          | `false`         | `true`                                                         |
+|`onSelect`|function to run when user select option from dropdown. this will return object similar to `{target: { name: string; value: string }}`|Yes||`(event) => {handleChange(event)`|
+|`onBlur`|function to excute when user going away from select component. have no return type|No||`() => console.log('blur event occurs)`|
+|`onFocus`|function to execute when user focus to select component. have no return type|No||`() => console.log('focus event occurs)`|
+|Additional  |Introduced|Props|||
+|`wrapperStyles`|react jsx style object to style entire wrapper of select component with label, secondary label and select component area|No||`{backgroundColor: "#f2f2f2" }`|
