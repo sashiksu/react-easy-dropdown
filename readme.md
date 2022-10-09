@@ -1,4 +1,4 @@
-# **React Simple Select**
+# **React Minimalist Select**
 
 **Contains minimum no of dependencies !**
 
@@ -15,7 +15,7 @@
 1. Install it <br/>
 
 ```react
-npm i react-simple-select
+npm i react-minimalist-select
 ```
 
 2. Import it to your React Component and use.
@@ -23,7 +23,7 @@ npm i react-simple-select
 
 ```react
 import React, { useState } from "react";
-import { BasicSelect } from "../src";
+import { BasicSelect } from "react-minimalist-list";
 const SampleOptionsData = [
   { id: 1, value: "Option 1" },
   { id: 2, value: "Option 2" },
