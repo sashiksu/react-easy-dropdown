@@ -1,4 +1,4 @@
-# **React Minimalist Select**
+# **React Easy Dropdown**
 
 **Contains minimum no of dependencies !**
 
@@ -15,7 +15,7 @@
 1. Install it <br/>
 
 ```react
-npm i react-minimalist-select
+npm i react-easy-dropdown
 ```
 
 2. Import it to your React Component and use.
@@ -23,7 +23,7 @@ npm i react-minimalist-select
 
 ```react
 import React, { useState } from "react";
-import { BasicSelect } from "react-minimalist-list";
+import { BasicSelect } from "react-easy-dropdown";
 const SampleOptionsData = [
   { id: 1, value: "Option 1" },
   { id: 2, value: "Option 2" },

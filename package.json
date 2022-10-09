@@ -1,31 +1,32 @@
 {
-  "name": "react-minimalist-select",
-  "version": "1.0.1",
+  "name": "react-easy-dropdown",
+  "version": "1.0.0",
   "description": "Fully customizable select component for react web application with fewer dependencies.",
   "author": "Sashika Suraweera",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sashiksu/react-minimalist-select.git"
+    "url": "https://github.com/sashiksu/react-easy-dropdown.git"
   },
   "bugs": {
-    "url": "https://github.com/sashiksu/react-siminimalistmple-select/issues",
+    "url": "https://github.com/sashiksu/react-easy-dropdown/issues",
     "email": "sashiksu@outlook.com"
   },
-  "homepage": "https://github.com/sashiksu/react-minimalist-select#readme",
+  "homepage": "https://github.com/sashiksu/react-easy-dropdown#readme",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "npm run build:esm && npm run build:cjs && npm run build:css",
+    "build": "npm run build:css && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "build:css": "node-sass src/components/BasicSelect/styles.css dist/esm/components/BasicSelect/styles.css --output-style compressed",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
     "prepare": "npm run build",
-    "publish:check": "npm test && npm run prettier && npm run lint"
+    "publish:check": "npm run prettier && npm run lint && npm publish --dry-run",
+    "publish": "npm publish"
   },
   "keywords": [
     "ui",
@@ -36,6 +37,14 @@
     "combobox",
     "input",
     "form"
+  ],
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
   ],
   "devDependencies": {
     "@babel/cli": "^7.1.0",
