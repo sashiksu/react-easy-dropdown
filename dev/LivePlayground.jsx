@@ -52,13 +52,13 @@ const LivePlayground = () => {
                 autoComplete='off'
                 onChange={(event) => handleChange(event)}
                 required={true}
-                disabled={true}
+                //disabled
               />
             </div>
             <BasicSelect
               name='select'
               required={true}
-              userTriedSubmit={true}
+              userTriedSubmit={false}
               options={SampleOptionsData}
               onSelect={(event) => {
                 handleChange(event);
@@ -67,7 +67,7 @@ const LivePlayground = () => {
               //value={SampleOptionsData[3]}
               //disabled={true}
               hasLabelText={true}
-              labelWrapperStyles={{ marginBottom: "0" }}
+              //labelWrapperStyles={{ marginBottom: "0" }}
               labelText={"Please select a option :"}
               //labelTextStyles={{ fontWeight: "700" }}
               hasSecondarTextForLabel={true}
@@ -75,18 +75,20 @@ const LivePlayground = () => {
               secondaryText={
                 "I'd like to pass varA,varB,varC,varD to my component, but not one by one because the number of variables inside objA and objB should be unknown."
               }
-              secondaryTextStyles={{ marginBottom: "0.8em", fontWeight: "100", fontSize: ".9rem" }}
+              //secondaryTextStyles={{ marginBottom: "0.8em", fontWeight: "100", fontSize: ".9rem" }}
               showDropdownOnClickOfValue={false}
-              selectContainerStyles={{ backgroundColor: "#f2f2f2", borderRadius: ".6rem" }}
+              //selectContainerStyles={{ backgroundColor: "#f2f2f2", borderRadius: ".6rem" }}
               hasClear={true}
               //clearControlEle={<span>Clear</span>}
               hasDivider={true}
+              hasDropdown={true}
               onFocus={() => {
                 console.log("user focused !");
               }}
               onBlur={() => {
                 console.log("user blur !");
               }}
+              optionStyles={{ backgroundColor: "red" }}
             />
             <div className='mb-3'>
               <label htmlFor='simpleTextArea' className='form-label'>

@@ -18,6 +18,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
       showOptions: false,
       highlightedOptionId: null,
       hasUserTouched: false,
+      noOfTimesOptionsShowed: 0,
     };
   }
   /* -------------------- Basic Functionalities -------------------- */
@@ -77,10 +78,12 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
       highlightedOptionId: null,
       selectedValue: undefined,
       showOptions: false,
+      hasUserTouched: false,
     });
-    /* if (this.state.selectedValue !== undefined) {
-      this.setState({ hasUserTouched: true });
-    } */
+    //show required indicator when user have cleared selected option
+    if (this.state.noOfTimesOptionsShowed > 0 && this.state.selectedValue === undefined) {
+      this.setHasUserTouched(true);
+    }
   };
   /* -------------------- Additional Functionalities -------------------- */
 
@@ -92,10 +95,17 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
   showOption = (isShow: boolean): void => {
     this.setState({
       showOptions: isShow,
+      //keep increment when user open or move out(click outside) of dropdown list(options)
+      noOfTimesOptionsShowed: this.state.noOfTimesOptionsShowed + 1,
     });
-    /* if (isShow && this.state.selectedValue === undefined) {
-      this.setState({ hasUserTouched: true });
-    } */
+    //show required indicator when user have opened dropdown and not select any option
+    if (this.state.noOfTimesOptionsShowed > 0 && this.state.selectedValue === undefined) {
+      this.setHasUserTouched(true);
+    }
+    //hide required indicator when user select option from dropdown
+    if (this.state.noOfTimesOptionsShowed > 0 && this.state.selectedValue !== undefined) {
+      this.setHasUserTouched(false);
+    }
   };
 
   /*
@@ -107,9 +117,13 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
     });
   };
 
-  setHasUserTouched = () => {
-    this.setState({ hasUserTouched: true });
+  /*
+  Marking component to track whether user touched it or not
+  */
+  setHasUserTouched = (hasTouched: boolean) => {
+    this.setState({ hasUserTouched: hasTouched });
   };
+
   /* -------------------- Dependency Functionalities -------------------- */
 
   render(): JSX.Element {
@@ -123,7 +137,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
         <div
           tabIndex={0}
           className={`basic-select__container ${disabled ? "disabled-wrapper" : ""} ${
-            hasUserTouched && userTriedSubmit && required ? "required" : ""
+            (hasUserTouched && required) || (required && userTriedSubmit) ? "required" : ""
           }`}
           style={selectContainerStyles}
           id={id}
@@ -137,7 +151,7 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
             showOptions={showOptions}
             onClickHanlder={this.showOption}
           />
-          <Clear {...this.props} clearHandler={this.clear} />
+          <Clear {...this.props} clearHandler={this.clear} selectedValue={selectedValue} />
           <Divider {...this.props} />
           <Dropdown {...this.props} showOptions={showOptions} onClickHanlder={this.showOption} />
           <BasicOptions
@@ -156,31 +170,51 @@ class BasicSelect extends Component<BasicSelectControlProps, BasicSelectControlS
   }
 
   public static defaultProps: Partial<BasicSelectControlProps> = {
+    //common select component related functionality props
     options: [],
     name: "select-component",
     value: undefined,
+    id: "select-component",
     required: false,
     disabled: false,
-    autofocus: false,
+    //autofocus: false,
     userTriedSubmit: false,
+
+    //select events
+    //onSelect: () => {return;},
+    //onBlur: () => {return;},
+    //onFocus: () => {return;},
+
     //additionally introduced functionality related props
-
+    //wrapperStyles: {},
+    //label related props
     hasLabelText: false,
-
+    //labelWrapperStyles:{},
+    //label text related props
     labelText: "Select a option:",
-
+    //labelTextStyles: {},
+    //secondary label text related props
     hasSecondarTextForLabel: false,
+    //secondaryTextWrapperStyle:{},
     secondaryText: "",
-
+    //secondaryTextStyles:{},
+    //select component container related props
+    //selectContainerStyles:{},
+    //value display props
     showDropdownOnClickOfValue: false,
-
+    //clear related props
     hasClear: true,
     clearControlEle: <ClearIcon />,
-
+    //divider related props
     hasDivider: true,
-
+    //dropdown related props
     hasDropdown: true,
     dropdownEle: <DropdownIcon />,
+    //options container related props
+    //optionsWrapperStyles:{},
+    //optionStyles:{},
+    //selectedOptionStyles:{},
+    //highlightedOtionStyles:{},
   };
 }
 

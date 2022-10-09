@@ -1,24 +1,43 @@
 {
   "name": "react-simple-select",
+  "private": true,
   "version": "1.0.0",
-  "description": "Powerful select component for react web application with fewer dependencies.",
-  "main": "index.js",
+  "description": "Fully customizable select component for react web application with fewer dependencies.",
+  "author": "Sashika Suraweera",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sashiksu/react-simple-select.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sashiksu/react-simple-select/issues",
+    "email": "sashiksu@outlook.com"
+  },
+  "homepage": "https://github.com/sashiksu/react-simple-select#readme",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
     "build": "npm run build:esm && npm run build:cjs && npm run build:css",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "build:css": "node-sass src/components/BasicSelect/styles.css dist/esm/components/BasicSelect/styles.css --output-style compressed"
+    "build:css": "node-sass src/components/BasicSelect/styles.css dist/esm/components/BasicSelect/styles.css --output-style compressed",
+    "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
+    "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
+    "prepare": "npm run build",
+    "publish:check": "npm test && npm run prettier && npm run lint"
   },
   "keywords": [
+    "ui",
     "react",
     "select component",
     "light-weighted component",
-    "zero dependencies"
+    "zero dependencies",
+    "combobox",
+    "input",
+    "form"
   ],
-  "author": "Sashika Suraweera",
-  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",

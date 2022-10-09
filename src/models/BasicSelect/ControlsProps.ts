@@ -1,5 +1,5 @@
 import React from "react";
-import { BasicSelectOption } from "./ControlsDefinitions";
+import { BasicSelectOption, MockMinimulEvent } from "./ControlsDefinitions";
 import {
   HighlightedOptionStyles,
   LabelTextStyles,
@@ -10,12 +10,9 @@ import {
   SecondaryTextStyles,
   SelectContainerStyles,
   SelectedOptionStyles,
-  WrapperStyles
+  WrapperStyles,
 } from "./ControlStyles";
 
-interface MockMinimulEvent {
-  target: { name: string; value: string };
-}
 interface BasicSelectControlProps {
   //common select component related functionality props
   options: BasicSelectOption[];
@@ -24,7 +21,7 @@ interface BasicSelectControlProps {
   id?: string; //id for the select
   required?: boolean; //whether select is required field or not
   disabled?: boolean; //whether select  is disabled or not
-  autofocus?: boolean; //whether need to focus select control
+  //autofocus?: boolean; //whether need to focus select control
   userTriedSubmit?: boolean;
 
   // select events
@@ -46,7 +43,6 @@ interface BasicSelectControlProps {
   */
   //additional styles related props
   wrapperStyles?: WrapperStyles; //JSX style object for outer most wrapper (wrapper of lebel and select component)
-
   //label related props
   hasLabelText?: boolean; //this will add label to top of select component
   labelWrapperStyles?: LabelWrapperStyles; // JSX style obj for label component
@@ -58,7 +54,6 @@ interface BasicSelectControlProps {
   secondaryTextWrapperStyle?: SecondaryLabelWrapperStyles;
   secondaryText?: string;
   secondaryTextStyles?: SecondaryTextStyles;
-
   //select component container related props
   selectContainerStyles: SelectContainerStyles;
   //value display props
@@ -66,14 +61,11 @@ interface BasicSelectControlProps {
   //clear related props
   hasClear?: boolean;
   clearControlEle?: React.ReactNode;
-
   //divider related props
   hasDivider?: boolean;
-
   //dropdown related props
   hasDropdown?: boolean;
   dropdownEle?: React.ReactNode;
-
   //options container related props
   optionsWrapperStyles?: OptionsWrapperStyles;
   optionStyles?: OptionStyles;
@@ -92,4 +84,13 @@ interface BasicOptionsProps {
   basicSelectRef: React.RefObject<HTMLDivElement>;
 }
 
-export { BasicSelectControlProps, BasicOptionsProps };
+interface ClearControlProps {
+  clearHandler: () => void;
+  selectedValue: BasicSelectOption | undefined;
+}
+interface ValueControlProps {
+  selectedValue: BasicSelectOption | undefined;
+  showOptions: boolean;
+  onClickHanlder: (showOptions: boolean) => void;
+}
+export { BasicSelectControlProps, BasicOptionsProps, ClearControlProps, ValueControlProps };
