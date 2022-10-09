@@ -1,4 +1,4 @@
-# React Simple Select
+# **React Simple Select**
 
 ## A simple select component for the React Library.
 
@@ -14,14 +14,14 @@
 
 1. Install it <br/>
 
-```
+```react
 npm i react-simple-select
 ```
 
 2. Import it to your React Component and use.
    _(See below example with example form)_<br/>
 
-```
+```react
 import React, { useState } from "react";
 import { BasicSelect } from "../src";
 const SampleOptionsData = [
@@ -142,17 +142,100 @@ export default LivePlayground;
 
 ### Props Definitions :
 
-| Props             | Definition                                                                                                                                                             | Is Required | Default Value   | Example Value                                                  |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | --------------- | -------------------------------------------------------------- |
-| `options`         | sturctured objects of array where each object have id and name as properties                                                                                           | No          | `[]`            | `[{ id: 1, value: "Option 1" },{ id: 2, value: "Option 2" },]` |
-| `name`            | name attribute of component                                                                                                                                            | Yes         | `"select-comp"` | `"country-dropdown"`                                           |
-| `value`           | Default value/ selected value                                                                                                                                          | No          | `undefined`     | `{ id: 1, value: "Option 1" }`                                 |     |
-| `id`              | id attribute of component                                                                                                                                              | No          | `"select-comp"` | `"country-dropdown"`                                           |
-| `required`        | whether required field or not                                                                                                                                          | No          | `false`         | `true`                                                         |
-| `disabled`        | whether component is in disabled mode or not                                                                                                                           | No          | `false`         | `true`                                                         |
-| `userTriedSubmit` | this prop can use for validation purpose, when user tries submit and got validation errors can mark component with red outline along with setting `required` to `true` | No          | `false`         | `true`                                                         |
-|`onSelect`|function to run when user select option from dropdown. this will return object similar to `{target: { name: string; value: string }}`|Yes||`(event) => {handleChange(event)`|
-|`onBlur`|function to excute when user going away from select component. have no return type|No||`() => console.log('blur event occurs)`|
-|`onFocus`|function to execute when user focus to select component. have no return type|No||`() => console.log('focus event occurs)`|
-|Additional  |Introduced|Props|||
-|`wrapperStyles`|react jsx style object to style entire wrapper of select component with label, secondary label and select component area|No||`{backgroundColor: "#f2f2f2" }`|
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Definition</th>
+      <th>Required</th>
+      <th>Default</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+   <tr>
+<td><code>options</code></td>
+<td>sturctured objects of array where each object have id and name as properties</td>
+<td>No</td>
+<td><code>[]</code></td>
+<td><code>[{ id: 1, value: &quot;Option 1&quot; },{ id: 2, value: &quot;Option 2&quot; },]</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>name attribute of component</td>
+<td>Yes</td>
+<td><code>&quot;select-comp&quot;</code></td>
+<td><code>&quot;country-dropdown&quot;</code></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>Default value/ selected value</td>
+<td>No</td>
+<td><code>undefined</code></td>
+<td><code>{ id: 1, value: &quot;Option 1&quot; }</code></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>id attribute of component</td>
+<td>No</td>
+<td><code>&quot;select-comp&quot;</code></td>
+<td><code>&quot;country-dropdown&quot;</code></td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td>whether required field or not</td>
+<td>No</td>
+<td><code>false</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td>whether component is in disabled mode or not</td>
+<td>No</td>
+<td><code>false</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>userTriedSubmit</code></td>
+<td>this prop can use for validation purpose, when user tries submit and got validation errors can mark component with red outline along with setting <code>required</code> to <code>true</code></td>
+<td>No</td>
+<td><code>false</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>onSelect</code></td>
+<td>function to run when user select option from dropdown. this will return object similar to <code>{target: { name: string; value: string }}</code></td>
+<td>Yes</td>
+<td></td>
+<td><code>(event) =&gt; {handleChange(event)</code></td>
+</tr>
+<tr>
+<td><code>onBlur</code></td>
+<td>function to excute when user going away from select component. have no return type</td>
+<td>No</td>
+<td></td>
+<td><code>() =&gt; console.log(&#39;blur event occurs)</code></td>
+</tr>
+<tr>
+<td><code>onFocus</code></td>
+<td>function to execute when user focus to select component. have no return type</td>
+<td>No</td>
+<td></td>
+<td><code>() =&gt; console.log(&#39;focus event occurs)</code></td>
+</tr>
+<tr>
+<td>Additional</td>
+<td>Introduced</td>
+<td>Props</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>wrapperStyles</code></td>
+<td>react jsx style object to style entire wrapper of select component with label, secondary label and select component area</td>
+<td>No</td>
+<td></td>
+<td><code>{backgroundColor: &quot;#f2f2f2&quot; }</code></td>
+</tr>
+  </tbody>
+</table>
