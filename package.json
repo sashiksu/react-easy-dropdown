@@ -1,6 +1,5 @@
 {
   "name": "react-simple-select",
-  "private": false,
   "version": "1.0.0",
   "description": "Fully customizable select component for react web application with fewer dependencies.",
   "author": "Sashika Suraweera",
