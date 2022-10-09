@@ -1,6 +1,6 @@
 {
   "name": "react-minimalist-select",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fully customizable select component for react web application with fewer dependencies.",
   "author": "Sashika Suraweera",
   "license": "MIT",
