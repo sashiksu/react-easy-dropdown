@@ -58,7 +58,7 @@ const LivePlayground = () => {
             <BasicSelect
               name='select'
               required={true}
-              userTriedSubmit={true}
+              userTriedSubmit={false}
               options={SampleOptionsData}
               onSelect={(event) => {
                 handleChange(event);
@@ -81,12 +81,14 @@ const LivePlayground = () => {
               hasClear={true}
               //clearControlEle={<span>Clear</span>}
               hasDivider={true}
+              hasDropdown={true}
               onFocus={() => {
                 console.log("user focused !");
               }}
               onBlur={() => {
                 console.log("user blur !");
               }}
+              optionStyles={{ backgroundColor: "red" }}
             />
             <div className='mb-3'>
               <label htmlFor='simpleTextArea' className='form-label'>
