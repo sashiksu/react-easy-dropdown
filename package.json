@@ -1,6 +1,6 @@
 {
   "name": "react-easy-dropdown",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Fully customizable select component for react web application with fewer dependencies.",
   "author": "Sashika Suraweera",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "start": "webpack-dev-server",
     "build": "npm run build:css && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
-    "build:cjs": "GENERATE_SOURCEMAP=false tsc --module commonjs --outDir dist/cjs",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "build:css": "node-sass src/components/BasicSelect/styles.css dist/esm/components/BasicSelect/styles.css --output-style compressed",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
