@@ -7,6 +7,7 @@ module.exports = {
   devtool: "source-map",
   entry: "./dev/index.js",
   mode: "development",
+  //stats: { warnings: false },
   module: {
     rules: [
       {
@@ -23,10 +24,12 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: ["ts-loader"],
-        /*  options: {
-          transpileOnly: true,
-        }, */
       },
+      /* {
+        test: /\.(ts|tsx)$/,
+        enforce: "pre",
+        use: ["source-map-loader"],
+      }, */
     ],
   },
   resolve: { extensions: ["*", ".js", ".jsx", ".tsx", ".ts", ".json"] },
@@ -42,4 +45,5 @@ module.exports = {
     hotOnly: true,
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
+  // ignoreWarnings: [/Failed to parse source map/],
 };
